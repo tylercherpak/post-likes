@@ -37,6 +37,7 @@ class Post_Likes {
 			$post_id = get_the_ID();
 		}
 		if ( ! is_user_logged_in() ) {
+			$url = wp_login_url( get_the_permalink( $post_id ) );
 			$class = 'login-to-like';
 			$text = 'login to like';
 		} else {
@@ -44,6 +45,7 @@ class Post_Likes {
 			$class = 'like';
 			$text  = 'click to like';
 			$toggle = 'like';
+			$url = '#';
 			if ( ! empty( $users_like_comments ) ) {
 				$users_like_comment = array_shift( $users_like_comments );
 				$users_like_karma   = $users_like_comment->comment_karma;
@@ -52,11 +54,12 @@ class Post_Likes {
 			}
 		}
 		$like_count = self::get_like_count();
-		$like_html = sprintf( '<a class="%1$s" data-post-id="%2$s" data-like-toggle="%4$s">%3$s </a>',
+		$like_html = sprintf( '<a class="%1$s" data-post-id="%2$s" data-like-toggle="%4$s" href="%5$s">%3$s</a>',
 			esc_attr( $class ),
 			esc_attr( $post_id ),
 			esc_html( $text ),
-			esc_attr( $toggle )
+			esc_attr( $toggle ),
+			esc_url( $url )
 		);
 		$count_html = sprintf( '<div>This post has %d likes</div>', esc_html( $like_count ) );
 		return $like_html . $count_html;
