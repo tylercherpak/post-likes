@@ -3,7 +3,7 @@
 /*
 Plugin Name: Post-Likes
 Plugin URI:
-Description: Add the ablility to "like" posts
+Description: Add the ablility to "like" posts. This plugin does not use any custom tables and instead uses comment-types to add the "likes"
 Version: 0.0.1
 Author: Tyler Cherpak
 Author URI: http://github.com/tylercherpak
