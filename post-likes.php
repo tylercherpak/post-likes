@@ -61,7 +61,7 @@ class Post_Likes {
 			esc_attr( $toggle ),
 			esc_url( $url )
 		);
-		$count_html = sprintf( '<div>This post has %d likes</div>', esc_html( $like_count ) );
+		$count_html = sprintf( '<div>This post has <span class="like-count-number">%d</span> likes</div>', esc_html( $like_count ) );
 		return $like_html . $count_html;
 	}
 

@@ -2,9 +2,12 @@
   $(document).ready( function() {
     $( '.like' ).click(function(e){
       e.preventDefault();
-      var element = $('.like');
-      var post_id = element.data('post-id');
+      var element = $('.like'),
+      post_id = element.data('post-id'),
+      number_html = $( '.like-count-number' );
       if( element.data( 'like-toggle' ) == 'like' ) {
+        var like_number = parseInt(number_html.text(), 10) + 1;
+        number_html.text( like_number );
         var data = {
           action: 'post_like',
           nonce: ajax_object.ajax_nonce,
@@ -21,6 +24,8 @@
           }
         });
       }else if( element.data( 'like-toggle' ) == 'unlike' ){
+        var like_number = parseInt(number_html.text(), 10) - 1;
+        number_html.text( like_number );
         var data = {
           action: 'post_unlike',
           nonce: ajax_object.ajax_nonce,
