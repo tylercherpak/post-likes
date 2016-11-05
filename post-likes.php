@@ -49,8 +49,8 @@ class Post_Likes {
 			if ( ! empty( $users_like_comments ) ) {
 				$users_like_comment = array_shift( $users_like_comments );
 				$users_like_karma   = $users_like_comment->comment_karma;
-				$toggle = ( $users_like_karma == 0 ) ? 'like' : 'unlike';
-				$text  = ( $users_like_karma == 0 ) ? 'click to like' : 'click to unlike';
+				$toggle = ( 0 === $users_like_karma ) ? 'like' : 'unlike';
+				$text  = ( 0 === $users_like_karma ) ? 'click to like' : 'click to unlike';
 			}
 		}
 		$like_count = self::get_like_count();
@@ -168,7 +168,7 @@ class Post_Likes {
 			$like_count = 0;
 			if ( ! empty( $comments ) ) {
 				foreach( $comments as $comment ){
-					if( $comment->comment_karma === '1' )
+					if( '1' === $comment->comment_karma )
 						$like_count++;
 				}
 			}
