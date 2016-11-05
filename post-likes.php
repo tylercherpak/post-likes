@@ -36,6 +36,7 @@ class Post_Likes {
 		if( empty( $post_id ) ){
 			$post_id = get_the_ID();
 		}
+		$toggle = 'like';
 		if ( ! is_user_logged_in() ) {
 			$url = wp_login_url( get_the_permalink( $post_id ) );
 			$class = 'login-to-like';
@@ -44,7 +45,6 @@ class Post_Likes {
 			$users_like_comments = self::get_user_like_comment( $post_id );
 			$class = 'like';
 			$text  = 'click to like';
-			$toggle = 'like';
 			$url = '#';
 			if ( ! empty( $users_like_comments ) ) {
 				$users_like_comment = array_shift( $users_like_comments );
